@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const League = require('../models/league')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  League.find()
+  .exec(function(error,leagues){
+    if(error){
+      return next(error);
+    } else {
+      res.render('index', { leagues: leagues });
+    }
+  })
+  
 });
 
 //navigation routes

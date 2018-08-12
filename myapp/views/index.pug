@@ -14,13 +14,16 @@ block content
     .row
       .col-sm
         h4 Lasted Scores
+        select.custom-select
+          each league in leagues
+            option(value=league.leagueId) #{league.leagueName}
         table.table
           thead.thead-dark
             tr
-              th(scope='col') #
-              th(scope='col') First
-              th(scope='col') Last
-              th(scope='col') Handle
+              th(scope='col') Home Team
+              th(scope='col') Score
+              th(scope='col') Away Team
+              th(scope='col') Score
           tbody
             tr
               th(scope='row') 1
