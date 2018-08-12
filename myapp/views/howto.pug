@@ -2,7 +2,15 @@ extends layout
 
 block content
   include nav.pug
-
+  body.bg-secondary
+    .container.p-5
+      h3.display-4 How To Play
+      p You will choose your leauge and create your game. Invite your friends and have fun. 
+      p You will guess every match result which is your selected league, when the match finished you got your points.
+      p You will get 1 point if you know the winning team, 2 points if you know the draws.
+      p Individual ranking
+      p In the individual ranking, all players compete against each other to see who has the most points. Each day players can see updated standings and find out how many points they've won or lost.
+      a.btn.btn-primary.btn-lg(href='#' role='button') Let&apos;s Start
   include footer.pug
 
 
