@@ -14,32 +14,19 @@ block content
     .row
       .col-sm
         h4 Lasted Scores
-        select.custom-select
+        select.custom-select.first-select
           each league in leagues
             option(value=league.leagueId) #{league.leagueName}
-        table.table
+        table.table.tableScore
           thead.thead-dark
             tr
               th(scope='col') Home Team
               th(scope='col') Score
               th(scope='col') Away Team
               th(scope='col') Score
-          tbody
+          tbody.team
             tr
-              th(scope='row') 1
-              td Mark
-              td Otto
-              td @mdo
-            tr
-              th(scope='row') 2
-              td Jacob
-              td Thornton
-              td @fat
-            tr
-              th(scope='row') 3
-              td Larry
-              td the Bird
-              td @twitter
+              td
       .col-sm
         h4 Top Wizzard&apos;s
         table.table
