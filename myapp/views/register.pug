@@ -4,16 +4,19 @@ block content
     include nav.pug
     .container.p-5
         .mx-auto(style='width: 400px;')
-            h4 Please Sign In 
+            h4 Please Fill Out The Form 
             form.form-control-sm
+                .form-group
+                    input#exampleInputEmail1.form-control(type='text', placeholder='Enter Name')
+                .form-group
+                    input#exampleInputEmail1.form-control(type='text', placeholder='Enter Lastname')
                 .form-group
                     input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
                     small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
                 .form-group
                     input#exampleInputPassword1.form-control(type='password', placeholder='Password')
-                .form-group.form-check
-                    a(href='/users/register') Register                           
-                button.btn.btn-primary(type='submit') Submit
+                .form-group.form-check                          
+                button.btn.btn-primary(type='submit') Register
     include footer.pug
 
 
