@@ -5,16 +5,16 @@ block content
     .container.p-5
         .mx-auto(style='width: 400px;')
             h4 Please Fill Out The Form 
-            form.form-control-sm
+            form.form-control-sm(method='POST' action='/register')
                 .form-group
-                    input#exampleInputEmail1.form-control(type='text', placeholder='Enter Name')
+                    input#exampleInputEmail1.form-control(type='text', id='name', name='name' placeholder='Enter Name')
                 .form-group
-                    input#exampleInputEmail1.form-control(type='text', placeholder='Enter Lastname')
+                    input#exampleInputEmail1.form-control(type='text', id='lastname', name='lastname', placeholder='Enter Lastname')
                 .form-group
-                    input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+                    input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', id='email' ,name='email' placeholder='Enter email')
                     small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
                 .form-group
-                    input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+                    input#exampleInputPassword1.form-control(type='password',  id='password' name='password' ,placeholder='Password')
                 .form-group.form-check                          
                 button.btn.btn-primary(type='submit') Register
     include footer.pug

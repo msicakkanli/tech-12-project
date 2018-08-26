@@ -14,30 +14,22 @@ block content
     .row
       .col-sm
         h4 Lasted Scores
+        select.custom-select.first-select
+          each league in leagues
+            option(value=league.leagueId) #{league.leagueName}
         table.table.tableScore
           thead.thead-dark
             tr
-              th(scope='col') Date
-              th(scope='col') Start
               th(scope='col') Home Team
               th(scope='col') Score
               th(scope='col') Away Team
               th(scope='col') Score
-              th
-          tbody
-            each match in matchs
-              tr
-                td= match.match_date
-                td= match.match_time
-                td= match.match_hometeam_name
-                td= match.match_hometeam_score
-                td= match.match_awayteam_name
-                td= match.match_awayteam_score
-                td
-                  button.btn.btn-primary
-                    a.text-white(href='/match_detail/'+ match.match_hometeam_name) Details
+          tbody.team
+            tr
+              td
+
   include footer.pug
 
- 
+
 
 

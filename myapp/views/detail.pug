@@ -1,0 +1,114 @@
+extends layout
+
+block content
+
+    include nav.pug
+    .jumbotron.bg-secondary
+        .container.text-light
+                p.display-4.text-center= match[0].match_hometeam_name
+                    |
+                    span.p-4= match[0].match_hometeam_score
+                    |
+                    span= match[0].match_awayteam_name
+                    |
+                    span.p-4= match[0].match_awayteam_score
+    .container
+        .row
+            .col-sm
+                .card(style='width: 20rem;')
+                    .card-body
+                    h5.card-title.text-center Key Events
+                    table.ml-4
+                        thead.thead-dark
+                            tr
+                                th Minute
+                                th Player
+                                th Score
+                            tbody
+                                each goal in match[0].goalscorer
+                                    tr
+                                        td= goal.time
+                                        if goal.home_scorer
+                                            td= goal.home_scorer
+                                        else
+                                            td= goal.away_scorer
+                                        td= goal.score
+                    table.ml-4
+                        thead.thead-dark
+                            tr
+                                th Minute
+                                th Player
+                                th Card
+                            tbody
+                                each card in match[0].cards
+                                    tr
+                                        td= card.time
+                                        if card.home_fault
+                                            td= card.home_fault
+                                        else
+                                            td= card.away_fault
+                                        td= card.card
+                    table.ml-4
+                        thead.thead-dark
+                            tr
+                                th Home
+                                th Minute
+                                th Player In - Out
+                            tbody
+                                each sub in match[0].lineup.home.substitutions
+                                    tr
+                                        td
+                                        td= sub.lineup_time
+                                        td= sub.lineup_player
+                    table.ml-4
+                        thead.thead-dark
+                            tr
+                                th Away
+                                th Minute
+                                th Player In - Out
+                            tbody
+                                each sub in match[0].lineup.away.substitutions
+                                    tr
+                                        td
+                                        td= sub.lineup_time
+                                        td= sub.lineup_player   
+
+            .col-sm
+                canvas#myChart
+            .col-sm
+                .card(style='width: 20rem;')
+                    .card-body
+                    h5.card-title.text-center Weather
+                    p.text-center.p-3
+                        | Temperature : 
+                        span= dailyForecast.temp.eve
+                        | °C
+                    p.text-center.p-3
+                        | Humidity :
+                        span= dailyForecast.humidity 
+                        | %
+                    p.text-center.p-3
+                        | Weather Info : 
+                        span= dailyForecast.weather[0].description
+                        |
+                    img.rounded.mx-auto.d-block(src="/images/"+ dailyForecast.weather[0].icon+".svg")
+
+
+
+ 
+                    
+
+
+
+
+
+
+
+         
+
+
+    include footer.pug
+
+
+
+

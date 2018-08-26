@@ -10,4 +10,8 @@ router.get('/register', function(req,res,next){
   res.render('register')
 })
 
+router.post('/register',function(req,res,next){
+  res.json('burası users/register post methodu')
+})
+
 module.exports = router;
