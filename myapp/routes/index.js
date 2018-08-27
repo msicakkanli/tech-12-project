@@ -25,7 +25,7 @@ if (day === 0 ) {
         weekOfStart = moment().add(dayDiffStart,'d').format('YYYY-MM-DD')
         weekOfEnd = moment().add(dayDiffEnd,'d').format('YYYY-MM-DD')
     }
-let leagueValue = 62
+let leagueValue = 376
 let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
 let leagueApi='http://localhost:3000/api/leagueData'
 let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
@@ -101,6 +101,22 @@ router.get('/standings', function (req,res,next) {
     })
 });
 
+router.post('/', function (req,res,next) {
+  leagueValue = req.body.selectleague
+  footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
+  function getLeague() {
+    return axios.get(leagueApi) 
+  }
+  function getMatch() {
+    return axios.get(footballApi)
+  }
+axios.all([getLeague(), getMatch()])
+.then(axios.spread(function (league, match) {
+      let matchs = match.data
+      let leagues = league.data
+      res.render('index', {matchs:matchs, leagues:leagues})
+}))
+})
 router.get('/schedule', function (req,res,next) {
   res.render('schedule')
 })

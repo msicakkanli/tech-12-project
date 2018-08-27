@@ -10,14 +10,15 @@ block content
     .row
       .col-sm
         .row.pl-3
-          .form-row.align-items-center
-            .col-auto.my-1
-              label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
-              select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague
-                each league in leagues
-                  option(value=league.leagueId) #{league.leagueName} 
-            .col-auto.my-1
-              button.btn.btn-primary.selectButton(type='submit') Submit            
+          form(method='POST' action='/') 
+            .form-row.align-items-center
+              .col-auto.my-1
+                label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
+                select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague(name='selectleague')
+                  each league in leagues
+                    option(value=league.leagueId) #{league.leagueName}  
+              .col-auto.my-1
+                button.btn.btn-primary.selectButton(type='submit') Submit           
         h4 Lasted Scores
         table.table.tableScore
           thead.thead-dark
