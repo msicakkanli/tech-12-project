@@ -27,15 +27,22 @@ if (day === 0 ) {
     }
 let leagueValue = 62
 let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
+let leagueApi='http://localhost:3000/api/leagueData'
+let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
 /* GET home page. */
 router.get('/', function(req, res, next) {
-axios.get(footballApi)
-.then((response) => {
-  if(response.status === 200) {
-    const matchs = response.data
-    res.render('index', {matchs:matchs})
+  function getLeague() {
+    return axios.get(leagueApi) 
   }
-})
+  function getMatch() {
+    return axios.get(footballApi)
+  }
+axios.all([getLeague(), getMatch()])
+.then(axios.spread(function (league, match) {
+      let matchs = match.data
+      let leagues = league.data
+      res.render('index', {matchs:matchs, leagues:leagues})
+}))
 });
 
 //Get match detail page
@@ -72,11 +79,9 @@ router.get('/match_detail/:id', function (req,res,next) {
                 if (diff <= 0) {
                   diff = 0
                 } 
-                //console.log(diff)
-                //console.log(weather.list[diff].temp.day, weather.city.name)
                 var dailyForecast = weather.list[diff]
                 res.render('detail', {dailyForecast:dailyForecast, match:match}) 
-                console.log(dailyForecast,match)  
+                 
                
             })); 
       }
@@ -84,8 +89,16 @@ router.get('/match_detail/:id', function (req,res,next) {
 })
 
 //navigation routes
-router.get('/howto', function (req,res,next) {
-  res.render('howto')
+router.get('/standings', function (req,res,next) {
+  axios.get(standingApi)
+    .then((response) => {
+
+      let  stand = response.data
+        console.log(stand)
+       // res.json(stand)
+        res.render('standings', {stand: stand})
+
+    })
 });
 
 router.get('/schedule', function (req,res,next) {

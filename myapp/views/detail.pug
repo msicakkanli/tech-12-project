@@ -5,13 +5,13 @@ block content
     include nav.pug
     .jumbotron.bg-secondary
         .container.text-light
-                p.display-4.text-center= match[0].match_hometeam_name
+                h1.text-center= match[0].match_hometeam_name
                     |
-                    span.p-4= match[0].match_hometeam_score
+                    span.mr-3.ml-1= match[0].match_hometeam_score
                     |
-                    span= match[0].match_awayteam_name
+                    span.mr-1= match[0].match_awayteam_name
                     |
-                    span.p-4= match[0].match_awayteam_score
+                    span= match[0].match_awayteam_score
     .container
         .row
             .col-sm
@@ -26,6 +26,7 @@ block content
                                 th Score
                             tbody
                                 each goal in match[0].goalscorer
+                                    if goal.time
                                     tr
                                         td= goal.time
                                         if goal.home_scorer
@@ -33,6 +34,11 @@ block content
                                         else
                                             td= goal.away_scorer
                                         td= goal.score
+                                else
+                                    tr
+                                        td
+                                        td
+                                        td There is no score 
                     table.ml-4
                         thead.thead-dark
                             tr
@@ -41,6 +47,7 @@ block content
                                 th Card
                             tbody
                                 each card in match[0].cards
+                                    if card.time
                                     tr
                                         td= card.time
                                         if card.home_fault
@@ -48,33 +55,108 @@ block content
                                         else
                                             td= card.away_fault
                                         td= card.card
-                    table.ml-4
-                        thead.thead-dark
-                            tr
-                                th Home
-                                th Minute
-                                th Player In - Out
-                            tbody
-                                each sub in match[0].lineup.home.substitutions
+                                else
                                     tr
                                         td
-                                        td= sub.lineup_time
-                                        td= sub.lineup_player
-                    table.ml-4
-                        thead.thead-dark
-                            tr
-                                th Away
-                                th Minute
-                                th Player In - Out
-                            tbody
-                                each sub in match[0].lineup.away.substitutions
-                                    tr
                                         td
-                                        td= sub.lineup_time
-                                        td= sub.lineup_player   
+                                        td There is no card 
+                    .container.main                    
+                        table.ml-4
+                            thead.thead-dark
+                                tr
+                                    th Home
+                                    th Minute
+                                    th Player In - Out
+                                tbody.subs
+                                    each sub in match[0].lineup.home.substitutions
+                                        if sub.lineup_player
+                                        tr
+                                            td
+                                            td= sub.lineup_time
+                                            td= sub.lineup_player
+                                    else
+                                            tr
+                                                td 
+                                                td
+                                                td There is no subs 
+                        table.ml-4
+                            thead.thead-dark
+                                tr
+                                    th Away
+                                    th Minute
+                                    th Player In - Out
+                                tbody.subs
+                                    each sub in match[0].lineup.away.substitutions
+                                        if sub.lineup_player
+                                        tr
+                                            td
+                                            td= sub.lineup_time
+                                            td= sub.lineup_player
+                                    else
+                                            tr
+                                                td 
+                                                td
+                                                td There is no subs 
 
             .col-sm
-                canvas#myChart
+             .card(style='width: 20rem;')
+                    .card-body
+                    h5.card-title.text-center Stats
+                        h6.text-center Shots On Target
+                        p.text-center
+                            | Home
+                            span.ml-1.mr-3.home_Sot= match[0].statistics[0].home
+                            span.mr-1.away_Sot= match[0].statistics[0].away
+                            | Away
+                        .container
+                            .progress.sot
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                        h6.text-center.mt-3 Shots Off Target
+                        p.text-center
+                            | Home
+                            span.ml-1.mr-3.home_Sof= match[0].statistics[1].home
+                            span.mr-1.away_Sof= match[0].statistics[1].away
+                            | Away
+                        .container
+                            .progress.sof
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                        h6.text-center.mt-3 Possession
+                        p.text-center
+                            | Home %
+                            span.ml-1.mr-3.home_Pos= match[0].statistics[2].home
+                            span.mr-1.away_Pos= match[0].statistics[2].away
+                            | Away %
+                        .container
+                            .progress.pos
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                        h6.text-center.mt-3 Corners
+                        p.text-center
+                            | Home 
+                            span.ml-1.mr-3.home_Cor= match[0].statistics[3].home
+                            span.mr-1.away_Cor= match[0].statistics[3].away
+                            | Away 
+                        .container
+                            .progress.cor
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                        h6.text-center.mt-3 Offside
+                        p.text-center
+                            | Home 
+                            span.ml-1.mr-3.home_Off= match[0].statistics[4].home
+                            span.mr-1.away_Off= match[0].statistics[4].away
+                            | Away 
+                        .container
+                            .progress.off
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                        h6.text-center.mt-3 Fouls
+                        p.text-center
+                            | Home 
+                            span.ml-1.mr-3.home_Fou= match[0].statistics[5].home
+                            span.mr-1.away_Fou= match[0].statistics[5].away
+                            | Away 
+                        .container
+                            .progress.fou
+                                .progress-bar(role='progressbar', style="width:25%", aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+
             .col-sm
                 .card(style='width: 20rem;')
                     .card-body

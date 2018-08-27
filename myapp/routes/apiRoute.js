@@ -9,11 +9,17 @@ const axios = require('axios');
 const Weather = require('../models/weather');
 
  
-  
+router.get('/leagueData', function (req,res,next) {
+    League.find()
+        .exec(function(error,leagues){
+            if(error){
+                return next(error);
+            }   else {
+                  res.json(leagues)
+                }
+    })
+})
 
 
 
-module.exports = router;
-
-
-
+module.exports = router; 

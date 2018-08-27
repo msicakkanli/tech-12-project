@@ -3,16 +3,21 @@ extends layout
 block content
   include nav.pug
   .jumbotron
-    h1.display-4 Wellcome the Football Wizzard&apos;s Home !!
+    h1.display-4 Wellcome the Football Scores Page !!
     p.lead
-      | If you rely on the ability to predict the match results, join the fun and race with the football stalwarts around the world.
-    hr.my-4
-    p
-      | We are the most popular platform for sports score predictions for the most popular football leagues. Let&apos;s join and have fun!!.
-    a.btn.btn-primary.btn-lg(href='#' role='button') Let&apos;s Start
+      | You can find out several league results, statistic, weather detail and much more ...
   .container
     .row
       .col-sm
+        .row.pl-3
+          .form-row.align-items-center
+            .col-auto.my-1
+              label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
+              select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague
+                each league in leagues
+                  option(value=league.leagueId) #{league.leagueName} 
+            .col-auto.my-1
+              button.btn.btn-primary.selectButton(type='submit') Submit            
         h4 Lasted Scores
         table.table.tableScore
           thead.thead-dark
@@ -26,7 +31,7 @@ block content
               th
           tbody
             each match in matchs
-              tr
+              tr.team
                 td= match.match_date
                 td= match.match_time
                 td= match.match_hometeam_name
@@ -36,6 +41,8 @@ block content
                 td
                   button.btn.btn-primary
                     a.text-white(href='/match_detail/'+ match.match_hometeam_name) Details
+          tbody.selectedteam
+            tr
   include footer.pug
 
  

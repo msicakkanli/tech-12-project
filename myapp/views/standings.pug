@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  include nav.pug
+  .container
+    .row.p-1
+      .col-sm
+        h4 Standings #{stand[0].league_name}
+        table.table
+          thead.thead-dark
+            tr
+              th(scope='col') Rank
+              th(scope='col') Team Name
+              th(scope='col') Played
+              th(scope='col') Win
+              th(scope='col') Draw
+              th(scope='col') Lose
+              th(scope='col') Goal
+              th(scope='col') Con.
+              th(scope='col') Points
+          tbody
+            each team in stand
+              tr
+                td= team.overall_league_position
+                td= team.team_name
+                td= team.overall_league_played
+                td= team.overall_league_W
+                td= team.overall_league_D
+                td= team.overall_league_L
+                td= team.overall_league_GF
+                td= team.overall_league_GA
+                td= team.overall_league_PTS
+
+
+ 
+  include footer.pug
+
+
+
+
