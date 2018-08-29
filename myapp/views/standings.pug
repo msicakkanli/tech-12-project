@@ -5,6 +5,16 @@ block content
   .container
     .row.p-1
       .col-sm
+        .row.pl-3
+          form(method='POST' action='/standing') 
+            .form-row.align-items-center
+              .col-auto.my-1
+                label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
+                select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague(name='selectleague')
+                  each league in leagues
+                    option(value=league.leagueId) #{league.leagueName}  
+              .col-auto.my-1
+                button.btn.btn-primary.selectButton(type='submit') Submit      
         h4 Standings #{stand[0].league_name}
         table.table
           thead.thead-dark

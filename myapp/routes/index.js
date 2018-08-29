@@ -26,9 +26,9 @@ if (day === 0 ) {
         weekOfEnd = moment().add(dayDiffEnd,'d').format('YYYY-MM-DD')
     }
 let leagueValue = 376
-let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
+let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
 let leagueApi='http://localhost:3000/api/leagueData'
-let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
+let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
 /* GET home page. */
 router.get('/', function(req, res, next) {
   function getLeague() {
@@ -41,9 +41,31 @@ axios.all([getLeague(), getMatch()])
 .then(axios.spread(function (league, match) {
       let matchs = match.data
       let leagues = league.data
-      res.render('index', {matchs:matchs, leagues:leagues})
+      let start = moment(weekOfStart).format('DD-MM')
+      let end = moment(weekOfEnd).format('DD-MM')
+      res.render('index', {matchs:matchs, leagues:leagues , start:start, end:end})
 }))
 });
+
+//change league data on index page
+router.post('/', function (req,res,next) {
+  leagueValue = req.body.selectleague
+  footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+  function getLeague() {
+    return axios.get(leagueApi) 
+  }
+  function getMatch() {
+    return axios.get(footballApi)
+  }
+axios.all([getLeague(), getMatch()])
+.then(axios.spread(function (league, match) {
+      let matchs = match.data
+      let leagues = league.data
+      let start = moment(weekOfStart).format('DD-MM')
+      let end = moment(weekOfEnd).format('DD-MM')
+      res.render('index', {matchs:matchs, leagues:leagues, start:start, end:end})
+}))
+})
 
 //Get match detail page
 router.get('/match_detail/:id', function (req,res,next) {
@@ -90,35 +112,41 @@ router.get('/match_detail/:id', function (req,res,next) {
 
 //navigation routes
 router.get('/standings', function (req,res,next) {
-  axios.get(standingApi)
-    .then((response) => {
-
-      let  stand = response.data
-        console.log(stand)
-       // res.json(stand)
-        res.render('standings', {stand: stand})
-
-    })
-});
-
-router.post('/', function (req,res,next) {
-  leagueValue = req.body.selectleague
-  footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=646fd20b9e01e1179ada2415371db638f460a3fcfaa4e17d6cc9ff5ac5b454f2'
   function getLeague() {
     return axios.get(leagueApi) 
   }
-  function getMatch() {
-    return axios.get(footballApi)
+  function getSchedule() {
+    return axios.get(standingApi)
   }
-axios.all([getLeague(), getMatch()])
-.then(axios.spread(function (league, match) {
-      let matchs = match.data
+axios.all([getLeague(), getSchedule()])
+.then(axios.spread(function (league, standing) {
+      let stand = standing.data
       let leagues = league.data
-      res.render('index', {matchs:matchs, leagues:leagues})
+      res.render('standings', {stand:stand, leagues:leagues})
+}))
+});
+
+//change league data on index page
+router.post('/standing', function (req,res,next) {
+  leagueValue = req.body.selectleague
+  let standingApi ='https://apifootball.com/api/?action=get_standings&league_id='+leagueValue+'&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+  function getLeague() {
+    return axios.get(leagueApi) 
+  }
+  function getSchedule() {
+    return axios.get(standingApi)
+  }
+axios.all([getLeague(), getSchedule()])
+.then(axios.spread(function (league, standing) {
+      let stand = standing.data
+      let leagues = league.data
+      res.render('standings', {stand:stand, leagues:leagues})
 }))
 })
-router.get('/schedule', function (req,res,next) {
-  res.render('schedule')
+
+
+router.get('/previous', function (req,res,next) {
+  res.render('previous')
 })
 
 
