@@ -8,6 +8,8 @@ const Team = require('../models/team');
 const axios = require('axios');
 const Weather = require('../models/weather');
 
+
+
  
 router.get('/leagueData', function (req,res,next) {
     League.find()
@@ -19,6 +21,10 @@ router.get('/leagueData', function (req,res,next) {
                 }
     })
 })
+
+
+
+
 
 
 

@@ -50,5 +50,26 @@ var FouPer = homeFou/ (homeFou + awayFou) * 100
 $('.fou .progress-bar').css('width', FouPer+'%');
 
 
+var week = $('#week').text()
+var numWeek = parseInt(week)
+console.log(week)
 
+$('#changeplusWeek').on('click', function(){
+    if (numWeek >= 4) {
+        numWeek = 4 
+        $("a").attr("href", "/previous/"+ numWeek)
+    } else {
+        numWeek += 1
+        $("a").attr("href", "/previous/"+ numWeek)
+    }
+})
 
+$('#changeminusWeek').on('click', function(){
+    if (numWeek <= 1) {
+        numWeek = 1 
+        $("a").attr("href", "/previous/"+ numWeek)
+    } else {
+        numWeek -= 1
+        $("a").attr("href", "/previous/"+ numWeek)
+    }
+})

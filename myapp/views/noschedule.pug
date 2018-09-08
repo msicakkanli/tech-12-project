@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  //- script.
+  //-   var test1= document.getElementById('week').innerHTML
+  //-   console.log(test1)
+  include nav.pug
+  .container
+    .row.p-1
+      .col-sm
+        .row.pl-3
+          form(method='POST' action='/standing') 
+            .form-row.align-items-center
+              .col-auto.my-1
+        h4
+          a#changeminusWeek(href='/previous/')
+            img(src='/images/left.svg')   
+          | Match Day 
+          span#week 
+          a#changeplusWeek(href='/previous/')
+            img(src='/images/right.svg')          
+        h4 There is no scheduled match...
+
+  include footer.pug

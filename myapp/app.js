@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -35,9 +34,11 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 //GET api route
 const apiRoute = require('./routes/apiRoute');
+app.use('/api', apiRoute)
+
+const seed = require('./routes/seed');
 app.use('/api', apiRoute)
 
 app.locals.moment = require('moment');
