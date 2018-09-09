@@ -6,29 +6,36 @@ const City = require('../models/city');
 const axios = require('axios');
 const moment = require('moment');
 const Result = require('../models/result')
+const config = require('../local/api')
 
 //calculate start and end of week days
-let day = moment().day()
-let dayDiffStart = 5 - day
-let dayDiffEnd = 8 - day
-if (day === 0) {
-  let dayDiffStart = -2
-  let dayDiffEnd = 1
-  weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
-  weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
-} else if (day === 1) {
-  let dayDiffStart = -3
-  let dayDiffEnd = 0
-  weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
-  weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
-} else {
-  weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
-  weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
-}
+// let day = moment().day()
+// let dayDiffStart = 5 - day
+// let dayDiffEnd = 8 - day
+// if (day === 0) {
+//   let dayDiffStart = -2
+//   let dayDiffEnd = 1
+//   weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
+//   weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
+// } else if (day === 1) {
+//   let dayDiffStart = -3
+//   let dayDiffEnd = 0
+//   weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
+//   weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
+// } else {
+//   weekOfStart = moment().add(dayDiffStart, 'd').format('YYYY-MM-DD')
+//   weekOfEnd = moment().add(dayDiffEnd, 'd').format('YYYY-MM-DD')
+// }
+let weekOfStart = '2018-09-14'
+let weekOfEnd = '2018-09-17'
+
 let leagueValue = 376
-let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+let footballApi ='https://apifootball.com/api/?action=get_events&from='+weekOfStart+'&to='+weekOfEnd+'&league_id='+leagueValue+'&APIkey='+config.footballApi
 let leagueApi='http://localhost:3000/api/leagueData'
-let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+let standingApi ='https://apifootball.com/api/?action=get_standings&league_id=376&APIkey='+config.footballApi
+
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   function getLeague() {
@@ -50,7 +57,7 @@ router.get('/', function (req, res, next) {
 //change league data on index page
 router.post('/', function (req, res, next) {
   leagueValue = req.body.selectleague
-  footballApi = 'https://apifootball.com/api/?action=get_events&from=' + weekOfStart + '&to=' + weekOfEnd + '&league_id=' + leagueValue + '&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+  footballApi = 'https://apifootball.com/api/?action=get_events&from=' + weekOfStart + '&to=' + weekOfEnd + '&league_id=' + leagueValue + '&APIkey='+config.footballApi
   function getLeague() {
     return axios.get(leagueApi)
   }
@@ -77,7 +84,7 @@ router.get('/match_detail/:id', function (req, res, next) {
         return next(error)
       } else {
         let teamCityId = teamDetail.city[0].cityId
-        let forecastApi = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + teamCityId + '&cnt=7&units=metric&APPID=31573ef1a574d3c2f1150c5d3ef9d2e5'
+        let forecastApi = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + teamCityId + '&cnt=7&units=metric&APPID='+config.weatherApi
         function getForecast() {
           return axios.get(forecastApi)
         }
@@ -110,27 +117,9 @@ router.get('/match_detail/:id', function (req, res, next) {
     })
 })
 
-//navigation routes
-// router.get('/standings', function (req, res, next) {
-//   function getLeague() {
-//     return axios.get(leagueApi)
-//   }
-//   function getSchedule() {
-//     return axios.get(standingApi)
-//   }
-//   axios.all([getLeague(), getSchedule()])
-//     .then(axios.spread(function (league, standing) {
-//       let stand = standing.data
-//       let leagues = league.data
-//       res.render('standings', {stand:stand, leagues:leagues})
-     
-//     }))
-// });
 
 //change league data on index page
-router.post('/standing', function (req, res, next) {
-  leagueValue = req.body.selectleague
-  let standingApi = 'https://apifootball.com/api/?action=get_standings&league_id=' + leagueValue + '&APIkey=ae3a83c0aaddac6fbfe8459ea2966e07264e6e7c00f581df7e837da355c49fd9'
+router.get('/standings', function (req, res, next) {
   function getLeague() {
     return axios.get(leagueApi)
   }
@@ -141,12 +130,32 @@ router.post('/standing', function (req, res, next) {
     .then(axios.spread(function (league, standing) {
       let stand = standing.data
       let leagues = league.data
-      stand.sort(function(a,b) {return (a.overall_league_position > b.overall_league_position) ? 1 : ((b.overall_league_position > a.overall_league_position) ? -1 : 0);} );
+      
+      stand.sort(function(a,b)  {return (parseInt(a.overall_league_position) > parseInt(b.overall_league_position) ? 1 : (parseInt(b.overall_league_position) > parseInt(a.overall_league_position)) ? -1 : 0);} );
+      res.render('standings', {stand:stand, leagues:leagues})
+     //res.json(stand)
+    }))
+});
+
+router.post('/standing', function (req, res, next) {
+  leagueValue = req.body.selectleague
+  let standingApi = 'https://apifootball.com/api/?action=get_standings&league_id=' + leagueValue + '&APIkey='+config.footballApi
+  function getLeague() {
+    return axios.get(leagueApi)
+  }
+  function getSchedule() {
+    return axios.get(standingApi)
+  }
+  axios.all([getLeague(), getSchedule()])
+    .then(axios.spread(function (league, standing) {
+      let stand = standing.data
+      let leagues = league.data
+      stand.sort(function(a,b) {return (parseInt(a.overall_league_position) > parseInt(b.overall_league_position) ? 1 : (parseInt(b.overall_league_position) > parseInt(a.overall_league_position)) ? -1 : 0);} )
       res.render('standings', { stand: stand, leagues: leagues })
     }))
 })
 
-let week = 1
+let week = 4
 router.get('/previous', function (req, res, next) {
   Result.find({ numberOfWeek: week })
     .exec(function (error, matchs) {
@@ -171,23 +180,7 @@ router.get('/previous/:id', function (req, res, next) {
     })
 })
 
-router.get('/standings', function (req, res, next) {
-  function getLeague() {
-    return axios.get(leagueApi)
-  }
-  function getSchedule() {
-    return axios.get(standingApi)
-  }
-  axios.all([getLeague(), getSchedule()])
-    .then(axios.spread(function (league, standing) {
-      let stand = standing.data
-      let leagues = league.data
-      
-      stand.sort(function(a,b) {return (a.overall_league_position > b.overall_league_position) ? 1 : ((b.overall_league_position > a.overall_league_position) ? -1 : 0);} );
-      res.render('standings', {stand:stand, leagues:leagues})
-     //res.json(stand)
-    }))
-});
+
 
 
 module.exports = router;
