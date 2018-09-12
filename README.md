@@ -10,11 +10,11 @@ All match details get from https://apifootball.com and weather one's https://ope
 ## Getting Started
 
 ### Setup
-`$ git clone https://github.com/msicakkanli/tech-12-project
-$ cd my-app`
+`$ git clone https://github.com/msicakkanli/tech-12-project`
+`$ cd my-app`
 
 ### Install
-`npm install`
+`$ npm install`
 
 ### Update API Keys
 Edit ./myapp/local/api.json and add Api football and weather API.
