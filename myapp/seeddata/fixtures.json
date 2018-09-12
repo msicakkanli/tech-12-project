@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5b94d0c9e162000ad8e84325"},"numberOfWeek":{"$numberInt":"1"},"start":"2018-08-10","end":"2018-08-13"}
+{"_id":{"$oid":"5b94d198e162000ad8e84393"},"numberOfWeek":{"$numberInt":"2"},"start":"2018-08-17","end":"2018-08-20"}
+{"_id":{"$oid":"5b94d1bfe162000ad8e843a3"},"numberOfWeek":{"$numberInt":"3"},"start":"2018-08-24","end":"2018-08-27"}
+{"_id":{"$oid":"5b94d1f9e162000ad8e843c1"},"numberOfWeek":{"$numberInt":"4"},"start":"2018-08-31","end":"2018-09-02"}
+{"_id":{"$oid":"5b94d226e162000ad8e843d8"},"numberOfWeek":{"$numberInt":"5"},"start":"2018-09-14","end":"2018-09-17"}

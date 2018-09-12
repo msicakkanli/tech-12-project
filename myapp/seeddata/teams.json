@@ -1,0 +1,38 @@
+{"_id":{"$oid":"5b7cef020d289e6ce526f641"},"countryName":"Turkey","team_name":"Besiktas","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165779"}]}
+{"_id":{"$oid":"5b7cf6120d289e6ce526fa1b"},"countryName":"Turkey","team_name":"Galatasaray","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165779"}]}
+{"_id":{"$oid":"5b7cf6670d289e6ce526fa5e"},"countryName":"Turkey","team_name":"Yeni Malatyaspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577b"}]}
+{"_id":{"$oid":"5b7cf6910d289e6ce526fa86"},"countryName":"Turkey","team_name":"Kasimpasa","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165779"}]}
+{"_id":{"$oid":"5b7cf71e0d289e6ce526faf7"},"countryName":"Turkey","team_name":"Kayserispor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165788"}]}
+{"_id":{"$oid":"5b7cf7610d289e6ce526fb3b"},"countryName":"Turkey","team_name":"Konyaspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577c"}]}
+{"_id":{"$oid":"5b7cf79b0d289e6ce526fb7b"},"countryName":"Turkey","team_name":"Istanbul Basaksehir","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165779"}]}
+{"_id":{"$oid":"5b7cf9a30d289e6ce526fbf3"},"countryName":"Turkey","team_name":"Ankaragucu","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165787"}]}
+{"_id":{"$oid":"5b7cfd9a0d289e6ce526fc74"},"countryName":"Turkey","team_name":"Trabzonspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577e"}]}
+{"_id":{"$oid":"5b7cfdd60d289e6ce526fcbc"},"countryName":"Turkey","team_name":"Fenerbahce","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165779"}]}
+{"_id":{"$oid":"5b7cfe320d289e6ce526fd2d"},"countryName":"Turkey","team_name":"Sivasspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577d"}]}
+{"_id":{"$oid":"5b7cfe7b0d289e6ce526fd8d"},"countryName":"Turkey","team_name":"Rizespor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165783"}]}
+{"_id":{"$oid":"5b7cff300d289e6ce526fe1e"},"countryName":"Turkey","team_name":"Akhisarspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577a"}]}
+{"_id":{"$oid":"5b7cff7c0d289e6ce526fe8a"},"countryName":"Turkey","team_name":"Bursaspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165789"}]}
+{"_id":{"$oid":"5b7cffe30d289e6ce526fed6"},"countryName":"Turkey","team_name":"Antalyaspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165781"}]}
+{"_id":{"$oid":"5b7d003b0d289e6ce526ff11"},"countryName":"Turkey","team_name":"Erzurum BB","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316577f"}]}
+{"_id":{"$oid":"5b7d00cb0d289e6ce526ff6a"},"countryName":"Turkey","team_name":"Goztepe","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba93165782"}]}
+{"_id":{"$oid":"5b7d010f0d289e6ce526ff96"},"countryName":"Turkey","team_name":"Alanyaspor","league":[{"$oid":"5b7034dbddbf8f56a947138e"}],"city":[{"$oid":"5b75afbed8d163ba9316578e"}]}
+{"_id":{"$oid":"5b8148e10d289e6ce527ce4f"},"countryName":"England","team_name":"Chelsea","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b81498f0d289e6ce527ceac"},"countryName":"England","team_name":"Watford","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b814ed20d289e6ce527d1a1"}]}
+{"_id":{"$oid":"5b814b5b0d289e6ce527cf95"},"countryName":"England","team_name":"Crystal Palace","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b814b990d289e6ce527cfb7"},"countryName":"England","team_name":"Liverpool","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165786"}]}
+{"_id":{"$oid":"5b814be40d289e6ce527cfe5"},"countryName":"England","team_name":"Manchester City","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba9316578f"}]}
+{"_id":{"$oid":"5b814c640d289e6ce527d02a"},"countryName":"England","team_name":"AFC Bournemouth","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba9316578d"}]}
+{"_id":{"$oid":"5b814c910d289e6ce527d045"},"countryName":"England","team_name":"Tottenham Hotspur","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b814cbf0d289e6ce527d05c"},"countryName":"England","team_name":"Everton","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165786"}]}
+{"_id":{"$oid":"5b814de30d289e6ce527d0f7"},"countryName":"England","team_name":"Burnley","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b814e560d289e6ce527d143"}]}
+{"_id":{"$oid":"5b81501a0d289e6ce527d2a9"},"countryName":"England","team_name":"Newcastle United","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b814fd50d289e6ce527d261"}]}
+{"_id":{"$oid":"5b81504f0d289e6ce527d2cb"},"countryName":"England","team_name":"Arsenal","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b8150780d289e6ce527d2e7"},"countryName":"England","team_name":"Manchester United","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba9316578f"}]}
+{"_id":{"$oid":"5b8150c40d289e6ce527d322"},"countryName":"England","team_name":"Leicester City","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba9316578b"}]}
+{"_id":{"$oid":"5b8151090d289e6ce527d361"},"countryName":"England","team_name":"Southampton","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165785"}]}
+{"_id":{"$oid":"5b8151320d289e6ce527d379"},"countryName":"England","team_name":"Fulham","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b8151a10d289e6ce527d3cb"},"countryName":"England","team_name":"Brighton &amp; Hove Albion","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165794"}]}
+{"_id":{"$oid":"5b8151f40d289e6ce527d411"},"countryName":"England","team_name":"Cardiff City","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165784"}]}
+{"_id":{"$oid":"5b81523d0d289e6ce527d44c"},"countryName":"England","team_name":"Wolverhampton Wanderers","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba9316578c"}]}
+{"_id":{"$oid":"5b8152650d289e6ce527d464"},"countryName":"England","team_name":"West Ham United","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165780"}]}
+{"_id":{"$oid":"5b8152990d289e6ce527d48d"},"countryName":"England","team_name":"Huddersfield Town","league":[{"$oid":"5b7034dbddbf8f56a9471377"}],"city":[{"$oid":"5b75afbed8d163ba93165790"}]}

@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5b7034dbddbf8f56a9471377"},"countryName":"England","leagueId":{"$numberInt":"62"},"leagueName":"Premier League","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a9471378"},"countryName":"England","leagueId":{"$numberInt":"63"},"leagueName":"Championship","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a9471379"},"countryName":"Italy","leagueId":{"$numberInt":"79"},"leagueName":"Serie A","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a947137a"},"countryName":"Spain","leagueId":{"$numberInt":"109"},"leagueName":"Liga BBVA","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a947137b"},"countryName":"Germany","leagueId":{"$numberInt":"117"},"leagueName":"Bundesliga","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a947137c"},"countryName":"France","leagueId":{"$numberInt":"127"},"leagueName":"Ligue 1","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a947137d"},"countryName":"France","leagueId":{"$numberInt":"128"},"leagueName":"Ligue 2","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5b7034dbddbf8f56a947138e"},"countryName":"Turkey","leagueId":{"$numberInt":"376"},"leagueName":"Super Lig","__v":{"$numberInt":"0"}}
