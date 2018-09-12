@@ -38,5 +38,8 @@ block content
                 td= match.match_hometeam_score
                 td= match.match_awayteam_name
                 td= match.match_awayteam_score
+                td
+                  button.btn.btn-primary
+                    a.text-white(href='/prev_detail/'+match.match_id) Details
 
   include footer.pug

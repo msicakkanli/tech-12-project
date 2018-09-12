@@ -118,6 +118,17 @@ router.get('/match_detail/:id', function (req, res, next) {
 })
 
 
+router.get('/prev_detail/:id', function (req, res, next) {
+  Result.findOne({ match_id: req.params.id })
+    .exec(function (error, matchDetail) {
+      if (error) {
+        return next(error)
+      } else {
+        res.render('prevdetail', {matchDetail:matchDetail})
+      }
+    })
+})
+
 //change league data on index page
 router.get('/standings', function (req, res, next) {
   function getLeague() {

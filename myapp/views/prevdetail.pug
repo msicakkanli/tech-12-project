@@ -1,0 +1,44 @@
+extends layout
+
+block content
+
+    include nav.pug
+    .jumbotron.bg-secondary
+        .container.text-light
+                h1.text-center= matchDetail.match_hometeam_name
+                    |
+                    span.mr-3.ml-1= matchDetail.match_hometeam_score
+                    |
+                    span.mr-1= matchDetail.match_awayteam_name
+                    |
+                    span= matchDetail.match_awayteam_score
+                h4.text-center  (#{matchDetail.match_hometeam_halftime_score} - #{matchDetail.match_awayteam_halftime_score})
+                table.text-center.align-bottom.justify-content-md-center
+                    thead.thead-dark
+                        tr
+                            th Minute
+                            th Player
+                            th Score
+                        tbody
+                            each goal in matchDetail.goalscorer
+                                if goal.time
+                                tr
+                                    td= goal.time
+                                    if goal.home_scorer
+                                        td= goal.home_scorer
+                                    else
+                                        td= goal.away_scorer
+                                    td= goal.score
+                            else
+                                tr
+                                    td
+                                    td
+                                    td There is no score 
+
+
+
+    include footer.pug
+
+
+
+
