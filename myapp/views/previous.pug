@@ -22,23 +22,23 @@ block content
         table.table
           thead.thead-dark
             tr
-              th(scope='col') Date
-              th(scope='col') Start
+              th.d-none.d-sm-table-cell(scope='col') Date
+              th.d-none.d-sm-table-cell(scope='col') Start
               th(scope='col') Home Team
               th(scope='col') Score
               th(scope='col') Away Team
               th(scope='col') Score
-              th
+              th.d-none.d-sm-table-cell
           tbody
             each match in matchs
               tr
-                td= moment(match.match_date).format('MM/DD/YYYY')
-                td= match.match_time
+                td.d-none.d-sm-table-cell= moment(match.match_date).format('MM/DD/YYYY')
+                td.d-none.d-sm-table-cell= match.match_time
                 td= match.match_hometeam_name
                 td= match.match_hometeam_score
                 td= match.match_awayteam_name
                 td= match.match_awayteam_score
-                td
+                td.d-none.d-sm-table-cell
                   button.btn.btn-primary
                     a.text-white(href='/prev_detail/'+match.match_id) Details
 
