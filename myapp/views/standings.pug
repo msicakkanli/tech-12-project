@@ -22,11 +22,11 @@ block content
               th(scope='col') Rank
               th(scope='col') Team Name
               th(scope='col') Played
-              th(scope='col') Win
-              th(scope='col') Draw
-              th(scope='col') Lose
-              th(scope='col') Goal
-              th(scope='col') Con.
+              th.d-none.d-sm-table-cell(scope='col') Win
+              th.d-none.d-sm-table-cell(scope='col') Draw
+              th.d-none.d-sm-table-cell(scope='col') Lose
+              th.d-none.d-sm-table-cell(scope='col') Goal
+              th.d-none.d-sm-table-cell(scope='col') Con.
               th(scope='col') Points
           tbody.tsGroup
             each team in stand
@@ -34,11 +34,11 @@ block content
                 td= team.overall_league_position
                 td= team.team_name
                 td= team.overall_league_payed
-                td= team.overall_league_W
-                td= team.overall_league_D
-                td= team.overall_league_L
-                td= team.overall_league_GF
-                td= team.overall_league_GA
+                td.d-none.d-sm-table-cell= team.overall_league_W
+                td.d-none.d-sm-table-cell= team.overall_league_D
+                td.d-none.d-sm-table-cell= team.overall_league_L
+                td.d-none.d-sm-table-cell= team.overall_league_GF
+                td.d-none.d-sm-table-cell= team.overall_league_GA
                 td= team.overall_league_PTS
 
 
