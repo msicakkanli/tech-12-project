@@ -20,4 +20,4 @@ All match details get from https://apifootball.com and weather one's https://ope
 Edit ./myapp/local/api.json and add Api football and weather API.
 
 ### Add Seed Data 
-Before you start project add json files which is located ./myapp/seeddata to your mongodb.
+Before you start project add json files which is located ./myapp/seeddata seed your mongodb.
