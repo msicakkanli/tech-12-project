@@ -10,35 +10,35 @@ block content
     .row
       .col-sm
         .row.pl-3
-              form(method='POST' action='/') 
-                .form-row.align-items-center
-                  .col-auto.my-1
-                    label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
-                    select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague(name='selectleague')
-                      each league in leagues
-                        option(value=league.leagueId) #{league.leagueName}  
-                  .col-auto.my-1
-                    button.btn.btn-primary.selectButton(type='submit') Submit
+            form(method='POST' action='/') 
+              .form-row.align-items-center
+                .col-auto.my-1
+                  label.mr-sm-2.sr-only(for='inlineFormCustomSelect') Select League
+                  select#inlineFormCustomSelect.custom-select.mr-sm-2.selectLeague(name='selectleague')
+                    each league in leagues
+                      option(value=league.leagueId) #{league.leagueName}  
+                .col-auto.my-1
+                  button.btn.btn-primary.selectButton(type='submit') Submit       
         table.table.tableScore
           thead.thead-dark
             tr
-              th(scope='col') Date
-              th(scope='col') Start
+              th.d-none.d-sm-table-cell(scope='col') Date
+              th.d-none.d-sm-table-cell(scope='col') Start
               th(scope='col') Home Team
               th(scope='col') Score
               th(scope='col') Away Team
               th(scope='col') Score
-              th
+              th.d-none.d-sm-table-cell
           tbody
             each match in matchs
               tr.team
-                td= match.match_date
-                td= match.match_time
+                td.d-none.d-sm-table-cell= match.match_date
+                td.d-none.d-sm-table-cell= match.match_time
                 td= match.match_hometeam_name
                 td= match.match_hometeam_score
                 td= match.match_awayteam_name
                 td= match.match_awayteam_score
-                td
+                td.d-none.d-sm-table-cell
                   button.btn.btn-primary
                     a.text-white(href='/match_detail/'+ match.match_hometeam_name) Details
           tbody.selectedteam
